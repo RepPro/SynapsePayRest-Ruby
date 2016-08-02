@@ -36,19 +36,23 @@ module SynapsePayRest
 
 
     def post(path, payload)
-      RestClient.post(full_url(path), payload.to_json, get_headers())
+      response = RestClient.post(full_url(path), payload.to_json, get_headers())
+      JSON.parse(response)
     end
 
     def patch(path, payload)
-      RestClient.patch(full_url(path), payload.to_json, get_headers())
+      response = RestClient.patch(full_url(path), payload.to_json, get_headers())
+      JSON.parse(response)
     end
 
     def get(path)
-      RestClient.get(full_url(path), get_headers())
+      response = RestClient.get(full_url(path), get_headers())
+      JSON.parse(response)
     end
 
     def delete(path)
-      RestClient.delete(full_url(path), get_headers())
+      response = RestClient.delete(full_url(path), get_headers())
+      JSON.parse(response)
     end
 
     private
